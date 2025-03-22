@@ -93,6 +93,10 @@ export class ExpansionPanelComponent implements OnInit{
     window.open(`https://muvix.cl/Ticketing/visSelectTickets.aspx?cinemacode=${cinemaId}&txtSessionId=${sessionId}&visLang=1`)
   }
 
+  buildUrlPaymentCinestar(cinemaId: string, sessionId: string){
+    window.open(`https://cinestar.cl/Ticketing/visSelectTickets.aspx?cinemacode=${cinemaId}&txtSessionId=${sessionId}&visLang=1`)
+  }
+
   onClose(): void{
     this.dialogRef.close(true);
   }
@@ -182,6 +186,5 @@ export class ExpansionPanelComponent implements OnInit{
       return dShow < dNow;
     }
   }
-
 
 }

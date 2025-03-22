@@ -101,6 +101,18 @@
                           >
 
                         {{ schedule.showtime }} {{schedule.language}}</button>
+                      }@else if
+                      (billboard.cinemaType === 'Cinestar'){
+                        <button mat-button
+                        [disabled]="isButtonDisabled(schedule.showtime, schedule.showdate, billboard.cinemaType)"
+                          (click)="buildUrlPaymentCinestar(
+                            cinema.cinemaExternalId,
+                            schedule.sessionId
+                          )"
+                          class="notranslate" translate="no"
+                          >
+
+                        {{ schedule.showtime }} {{schedule.language}}</button>
                       }
                       <hr>
                     </div>
