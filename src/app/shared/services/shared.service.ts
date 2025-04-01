@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, OnInit } from "@angular/core";
-import { Observable, of } from 'rxjs';
+import { from, map, Observable, of, switchMap, tap } from 'rxjs';
 import { environments } from '../../../environments/environments';
 import { IUbication } from "../../common/interfaces";
 import stringSimilarity from "string-similarity";
@@ -41,31 +41,31 @@ export class SharedService{
   }
 
   getUserLocation(): Observable<string> {
-    return new Observable<string>((observer) => {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const lat = position.coords.latitude;
-          const lng = position.coords.longitude;
 
-          this.getUbicationByGeoCode(lat, lng).subscribe(response => {
-            console.log(response);
+    return new Observable<GeolocationPosition>(observer => {
 
-            //localStorage.setItem("user_ubication",response.address.state)
-            //sessionStorage.setItem("user_ubication",response.address.state)
+      navigator.geolocation.getCurrentPosition(position =>
+        observer.next(position),
+        error => observer.error(error));
+    }).pipe(
+      switchMap( position => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        console.log('Obteniendo latitud y longitud: ', lat, lng);
 
-            const allRegionsName = this.allRegions.map(region => region.name);
-            const similarRegion = this.findSimilarityRegion(allRegionsName, response.address.state);
+        return this.getUbicationByGeoCode(lat, lng);
+      }),
+      tap(response => console.log(response)),
+      map(response => {
+        const allRegionsName = this.allRegions.map(region => region.name);
+        const similarRegion = this.findSimilarityRegion(allRegionsName, response.address.state);
 
-            this.userCurrentRegion = similarRegion;
-            observer.next(this.userCurrentRegion);
-            observer.complete();
-          });
-        },
-        (error) => {
-          observer.error(error);
-        }
-      );
-    });
+        this.userCurrentRegion = similarRegion;
+        return this.userCurrentRegion;
+      })
+
+    )
+
   }
 
   findSimilarityRegion(array: string[], value: string): string {
