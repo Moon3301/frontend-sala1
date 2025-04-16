@@ -97,6 +97,14 @@ export class ExpansionPanelComponent implements OnInit{
     window.open(`https://cinestar.cl/Ticketing/visSelectTickets.aspx?cinemacode=${cinemaId}&txtSessionId=${sessionId}&visLang=1`)
   }
 
+  buildUrlPaymentLido(url: string){
+    window.open(url)
+  }
+
+  buildUrlPaymentPDV(){
+    window.open(`https://sertex.stonline.cl/CinePaseodelValle/VentaTickets/cpvFrontOffice/Cliente/Acceso`)
+  }
+
   onClose(): void{
     this.dialogRef.close(true);
   }

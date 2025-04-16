@@ -113,6 +113,24 @@
                           >
 
                         {{ schedule.showtime }} {{schedule.language}}</button>
+                      }@else if(billboard.cinemaType === 'Lido'){
+                        <button mat-button
+                        [disabled]="isButtonDisabled(schedule.showtime, schedule.showdate, billboard.cinemaType)"
+                          (click)="buildUrlPaymentLido(
+                            schedule.sessionId
+                          )"
+                          class="notranslate" translate="no"
+                          >
+
+                        {{ schedule.showtime }} {{schedule.language}}</button>
+                      }@else if(billboard.cinemaType === 'Paseo del valle'){
+                        <button mat-button
+                        [disabled]="isButtonDisabled(schedule.showtime, schedule.showdate, billboard.cinemaType)"
+                          (click)="buildUrlPaymentPDV()"
+                          class="notranslate" translate="no"
+                          >
+
+                        {{ schedule.showtime }} {{schedule.language}}</button>
                       }
                       <hr>
                     </div>
