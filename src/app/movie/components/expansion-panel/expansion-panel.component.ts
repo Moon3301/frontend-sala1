@@ -14,6 +14,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MovieService } from '../../services/movie.service';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatOptionSelectionChange } from '@angular/material/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'movie-expansion-panel',
@@ -27,7 +28,8 @@ import { MatOptionSelectionChange } from '@angular/material/core';
     MatChipsModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    CommonModule
   ],
   templateUrl: './expansion-panel.component.html',
   styleUrl: './expansion-panel.component.css',
@@ -38,6 +40,7 @@ export class ExpansionPanelComponent implements OnInit{
   dates: string[] = []
   dataBillboards!: { billboards: ICines[]; movie: Movie; };
   isLoading: boolean = false;
+  selectedDate: any
 
   constructor(
     public dialogRef: MatDialogRef<ExpansionPanelComponent>,
@@ -52,6 +55,9 @@ export class ExpansionPanelComponent implements OnInit{
     this.dates = this.data.dates
 
     this.dataBillboards = this.data
+
+    const today = this.getTodayString();
+    this.selectedDate = this.dates.includes(today) ? today : this.dates[0]
 
     if(this.dataBillboards.billboards.length == 0){
 
@@ -193,6 +199,13 @@ export class ExpansionPanelComponent implements OnInit{
       // Si no es el mismo día, se deshabilita el botón si la fecha del show es anterior al día actual.
       return dShow < dNow;
     }
+  }
+
+  private getTodayString(): string {
+    const d = new Date();
+    const mm = (d.getMonth() + 1).toString().padStart(2, '0');
+    const dd = d.getDate().toString().padStart(2, '0');
+    return `${d.getFullYear()}-${mm}-${dd}`;
   }
 
 }

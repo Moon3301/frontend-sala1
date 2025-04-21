@@ -1,11 +1,15 @@
 .dialog-content {
-  background-color: rgb(15, 15, 30);
+  background-color: whitesmoke;
+}
 
+.text-showtime {
+  font-size: clamp(8px, 2vw, 12px);
+  width: 100%;
+  word-wrap: break-word;
 }
 
 .fechas-funciones {
   padding: 0;
-  border: 1px solid black;
   height: 55px;
   width: 25%;
 }
@@ -13,7 +17,6 @@
 @media (max-width: 477px) {
   .fechas-funciones {
     padding: 0;
-    border: 1px solid black;
     height: 55px;
     width: 100%;
   }
@@ -22,7 +25,6 @@
 @media ((min-width: 477px) and (max-width: 768px)) {
   .fechas-funciones {
     padding: 0;
-    border: 1px solid black;
     height: 55px;
     width: 75%;
   }

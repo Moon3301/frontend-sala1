@@ -9,7 +9,7 @@
       </h3>
 
       <!-- Botón de cierre en el extremo derecho -->
-      <button class="btn-close" style="background-color: cyan;" (click)="onClose()"></button>
+      <button class="btn-close" style="background-color: rgb(31,31,31);" (click)="onClose()"></button>
     </div>
   </div>
 
@@ -19,7 +19,7 @@
     <div style="display: flex; justify-content: flex-end; width: 100%;">
       <mat-form-field appearance="outline" class="fechas-funciones">
         <mat-label>Funciones disponibles</mat-label>
-        <mat-select [value]="dates[0]">
+        <mat-select [value]="selectedDate">
           @for (date of dates; track date) {
             <mat-option [value]="date" (onSelectionChange)="onSelectDate(date, $event)">{{date}}</mat-option>
           }
@@ -33,37 +33,42 @@
       </div>
     } @else if(data.billboards.length > 0){
       @for (billboard of data.billboards; track billboard) {
-        <mat-expansion-panel >
+        <mat-expansion-panel style="background-color: rgb(31, 31, 31); color: whitesmoke;">
           <mat-expansion-panel-header>{{billboard.cinemaType}}</mat-expansion-panel-header>
 
           @for (cinema of billboard.cinemas; track cinema) {
             <br>
             <mat-card>
               <mat-card-header>
-                <mat-card-title>{{cinema.cinemaName}}</mat-card-title>
+                <mat-card-title style="color: rgb(31, 31, 31);">{{cinema.cinemaName}}</mat-card-title>
               </mat-card-header>
               <hr>
               <mat-card-content>
-                <mat-card-subtitle>Funciones: </mat-card-subtitle>
-                <div class="row">
+
+                <div class="row" >
                   @for (schedule of cinema.showtimes; track schedule) {
 
-                    <div class="col-6 col-md-2">
+                    @let disabled = isButtonDisabled(schedule.showtime, schedule.showdate, billboard.cinemaType);
+
+                    <div class="col-6 col-md-2 text-center" >
                       @if(billboard.cinemaType === 'Cinepolis'){
                         <button mat-button
-                          [disabled]="isButtonDisabled(schedule.showtime, schedule.showdate, billboard.cinemaType)"
+
+                          [disabled]="disabled"
+                          [ngStyle]="disabled ? { color: 'grey' } : { color: 'black' }"
                           (click)="buildUrlPaymentCinepolis(
                           cinema.vistaId,
                           schedule.showtimeExternalId)"
-                          class="notranslate" translate="no"
+                          class="notranslate text-showtime" translate="no"
                           >
-
-                        {{ schedule.showtime }} {{schedule.language}}</button>
-
+                          {{ schedule.showtime }} {{schedule.language}}
+                      </button>
+                      <mat-divider class="mt-2"></mat-divider>
                       }@else if
                       (billboard.cinemaType === 'Cinemark'){
                         <button mat-button
-                        [disabled]="isButtonDisabled(schedule.showtime, schedule.showdate, billboard.cinemaType)"
+                        [disabled]="disabled"
+                        [ngStyle]="disabled ? { color: 'grey' } : { color: 'black' }"
                         (click)="buildUrlPaymentCinemark(
                           cinema.cinemaExternalId,
                           schedule.showtimeExternalId,
@@ -71,66 +76,76 @@
                           schedule.showtime,
                           cinema.cinemaSlug,
                           schedule.sessionId)"
-                          class="notranslate" translate="no"
+                          class="notranslate text-showtime" translate="no"
                           >
 
                         {{ schedule.showtime }} {{schedule.language}}</button>
-
+                        <mat-divider class="mt-3"></mat-divider>
                       }@else if
                       (billboard.cinemaType === 'Cineplanet'){
                         <button mat-button
-                        [disabled]="isButtonDisabled(schedule.showtime, schedule.showdate, billboard.cinemaType)"
+                        [disabled]="disabled"
+                        [ngStyle]="disabled ? { color: 'grey' } : { color: 'black' }"
                           (click)="buildUrlPaymentCineplanet(
                             cinema.version.title,
                             cinema.cinemaExternalId,
                             schedule.sessionId
                           )"
-                          class="notranslate" translate="no"
+                          class="notranslate text-showtime" translate="no"
                           >
 
                         {{ schedule.showtime }} {{schedule.language}}</button>
+                        <mat-divider class="mt-3"></mat-divider>
                       }@else if
                       (billboard.cinemaType === 'Muvix'){
                         <button mat-button
-                        [disabled]="isButtonDisabled(schedule.showtime, schedule.showdate, billboard.cinemaType)"
+                        [disabled]="disabled"
+                        [ngStyle]="disabled ? { color: 'grey' } : { color: 'black' }"
                           (click)="buildUrlPaymentMuvix(
                             cinema.cinemaExternalId,
                             schedule.sessionId
                           )"
-                          class="notranslate" translate="no"
+                          class="notranslate text-showtime" translate="no"
                           >
 
                         {{ schedule.showtime }} {{schedule.language}}</button>
+                        <mat-divider class="mt-3"></mat-divider>
                       }@else if
                       (billboard.cinemaType === 'Cinestar'){
                         <button mat-button
-                        [disabled]="isButtonDisabled(schedule.showtime, schedule.showdate, billboard.cinemaType)"
+                        [disabled]="disabled"
+                        [ngStyle]="disabled ? { color: 'grey' } : { color: 'black' }"
                           (click)="buildUrlPaymentCinestar(
                             cinema.cinemaExternalId,
                             schedule.sessionId
                           )"
-                          class="notranslate" translate="no"
+                          class="notranslate text-showtime" translate="no"
                           >
 
                         {{ schedule.showtime }} {{schedule.language}}</button>
+                        <mat-divider class="mt-3"></mat-divider>
                       }@else if(billboard.cinemaType === 'Lido'){
                         <button mat-button
-                        [disabled]="isButtonDisabled(schedule.showtime, schedule.showdate, billboard.cinemaType)"
+                        [disabled]="disabled"
+                        [ngStyle]="disabled ? { color: 'grey' } : { color: 'black' }"
                           (click)="buildUrlPaymentLido(
                             schedule.sessionId
                           )"
-                          class="notranslate" translate="no"
+                          class="notranslate text-showtime" translate="no"
                           >
 
                         {{ schedule.showtime }} {{schedule.language}}</button>
+                        <mat-divider class="mt-3"></mat-divider>
                       }@else if(billboard.cinemaType === 'Paseo del valle'){
                         <button mat-button
-                        [disabled]="isButtonDisabled(schedule.showtime, schedule.showdate, billboard.cinemaType)"
+                        [disabled]="disabled"
+                        [ngStyle]="disabled ? { color: 'grey' } : { color: 'black' }"
                           (click)="buildUrlPaymentPDV()"
-                          class="notranslate" translate="no"
+                          class="notranslate text-showtime" translate="no"
                           >
 
                         {{ schedule.showtime }} {{schedule.language}}</button>
+                        <mat-divider class="mt-3"></mat-divider>
                       }
                       <hr>
                     </div>

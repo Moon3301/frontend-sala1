@@ -12,6 +12,13 @@ import { environments } from '../../../../environments/environments';
 })
 export class CarruselComponent implements OnInit{
 
+  swiperBreakpoints = {
+    0:    { slidesPerView: 2 },
+    600:  { slidesPerView: 3 },
+    960:  { slidesPerView: 5 },
+    1280: { slidesPerView: 7 }
+  };
+
   @ViewChild('carouselContainer') carouselContainer!: ElementRef;
 
   baseUrl = environments.baseUrl;

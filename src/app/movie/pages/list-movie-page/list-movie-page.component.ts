@@ -8,7 +8,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'movie-list-movie-page',
   standalone: false,
-
   templateUrl: './list-movie-page.component.html',
   styleUrl: './list-movie-page.component.css'
 })

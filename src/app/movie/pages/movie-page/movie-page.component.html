@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container" style="margin-top: 80px;">
 
   <!-- Contenedor del video con alto fijo -->
   <mat-card class="video-container">
@@ -11,18 +11,17 @@
   </mat-card>
   <!-- Imagen del poster posicionada de forma absoluta -->
 
-  <mat-card class="mb-5">
+  <mat-card style="background-color: rgb(31, 31, 31);" class="mb-5">
     <!-- Contenido textual que quedará siempre debajo del contenedor de video -->
     <mat-card-content >
+      <img
+        class="movie-poster"
+        [src]="movie?.img_url"
+        [alt]="movie?.title"
+      />
 
       <div class="row">
         <div class="col-3 col-md-3 movie-detail">
-
-          <img
-            class="movie-poster"
-            [src]="movie?.img_url"
-            [alt]="movie?.title"
-          />
 
           <h5>Titulo </h5>
           <mat-divider></mat-divider>
@@ -32,11 +31,8 @@
           <mat-divider></mat-divider>
           <h6>{{ movie?.rating }}</h6>
 
-          <h5>Categoria:</h5>
-          <mat-divider></mat-divider>
-
           <br>
-          <button mat-flat-button (click)="openBillboards()" [disabled]="!funciones">
+          <button style="background-color: whitesmoke; color: rgb(31, 31, 31);" mat-flat-button (click)="openBillboards()" [disabled]="!funciones">
             Ver funciones
           </button>
         </div>
@@ -45,7 +41,7 @@
           <h3>{{ movie?.synopsis_alt }}</h3>
           <br>
           <h5 >Sinopsis:</h5>
-          <h6 style="max-height: 200px; overflow-y: auto;">{{ movie?.synopsis }}</h6>
+          <p class="movie-synopsis" style="max-height: 200px; overflow-y: auto;">{{ movie?.synopsis }}</p>
         </div>
 
       </div>

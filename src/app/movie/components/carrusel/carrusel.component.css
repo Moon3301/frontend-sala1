@@ -2,16 +2,15 @@
  * Estilos generales del Hero
  ****************************************/
 
- .carousel-bg {
-  position: absolute;
-  top: 0;
+.carousel-bg {
   width: 100%;
+  height: 100vh; /* Ajusta la altura según tu preferencia */
 }
 
- .hero-container {
+.hero-container {
   position: relative;
   width: 100%;
-  height: 700px; /* Ajusta la altura según tu preferencia */
+  height: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -20,40 +19,36 @@
 
 .hero-background {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0; /* Equivalente a top: 0; left: 0; right: 0; bottom: 0; */
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
   filter: brightness(0.5); /* Oscurece un poco para resaltar el texto */
+}
+
+.swiper-carrousel {
+  z-index: 1000;
+  color: white;
+
+  background-color: rgba(31, 31, 31, 0.4);
+  border-radius: 20px;
+  --swiper-navigation-color: whitesmoke;
+
 }
 
 .hero-content {
   position: relative;
-  bottom: 15%;
+  bottom: 20%;
   padding: 10px;
   z-index: 1;
   max-width: 100%;
-  color: #fff;
+  color: whitesmoke;
   margin: 0 20px;
-  text-align: left; /* en móviles, o left en escritorio, según prefieras */
+  text-align: center; /* en móviles, o left en escritorio, según prefieras */
 }
 
 .hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  font-weight: bold;
-}
-
-.hero-content p {
-  font-size: 1.2rem;
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-}
-
-.hero-content h1 {
-  font-size: 3rem;
+  font-size: 2.3rem;
   margin-bottom: 1rem;
   font-weight: bold;
 }
@@ -72,135 +67,77 @@
  * Sección de Trending Movies
  ****************************************/
 .trending-movies-container {
-  bottom: 350px;
   position: relative;
-  width: 100%;
-
+  bottom: 370px; /* Ajusta según la altura del hero */
+  width: auto;
   padding: 2rem 2rem 3rem;
   background-color: transparent;
   /* Para que visualmente se note cambio de sección */
 }
 
 .trending-movies-container h2 {
-
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-bottom: 1rem;
 }
 
-.trending-carousel {
-  display: flex;
-  gap: 1rem;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 20px;
-
-  overflow-x: auto; /* hace que el contenedor scrollee horizontalmente */
-  padding: 0.5rem 0;
-  scroll-behavior: smooth; /* scroll suave */
-}
-
-/** Ocultar scrollbars en algunos navegadores (opcional) **/
-.trending-carousel::-webkit-scrollbar {
-  display: none;
-}
-
-.movie-poster {
+.movie-posters {
   padding-left: 10px;
   padding-right: 10px;
   flex: 0 0 auto;
   width: 200px; /* ajusta tamaño del poster */
   transition: transform 0.3s;
+  border-radius: 12px;
 }
 
-.movie-poster img {
+.movie-posters img {
   width: 100%;
   border-radius: 8px;
   display: block;
 }
 
-.movie-poster:hover {
+.movie-posters:hover {
   transform: scale(1.05);
   cursor: pointer;
 }
 
-.carousel-wrapper {
-  position: relative;
-}
-
-.carousel-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: #fff;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 2;
-  display: none; /* se pueden ocultar en desktop si no son necesarios */
-}
-
-
-/* Media Query para dispositivos móviles */
-
-/* Mostrar botones en móviles o siempre si se prefiere */
-@media (max-width: 768px) {
-  .carousel-button {
-    display: block;
+@media (max-width: 792px) {
+  .movie-posters {
+    padding-left: 10px;
+    padding-right: 10px;
+    flex: 0 0 auto;
+    width: 150px; /* ajusta tamaño del poster */
+    transition: transform 0.3s;
+    border-radius: 12px;
   }
-}
-
-.carousel-button.left {
-  left: 10px;
-}
-
-.carousel-button.right {
-  right: 10px;
-}
-
-@media (max-width: 768px) {
 
   .trending-movies-container {
-    bottom: 0px;
-    position: relative;
-    width: 100%;
 
-    padding: 2rem 2rem 3rem;
-    background-color: transparent;
+    bottom: 300px; /* Ajusta según la altura del hero */
+
   }
-  .hero-content {
-    position: relative; /* o mantener absolute pero sin tanta restricción */
-    left: 50%;
-    top: 30%;
-    transform: translate(-50%, -50%);
-    text-align: left; /* centra el contenido para móviles */
-    padding: 10px;
-  }
-  .hero-container {
-    height: 400px; /* reducir altura en móviles */
-  }
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-  .hero-content p {
-    font-size: 1rem;
-  }
-  .trending-carousel {
-    gap: 0.5rem;
-    padding: 0.5rem; /* Ajuste para menor espacio */
-  }
-  .movie-poster {
-    width: 150px; /* Posters más pequeños en móvil */
-  }
-  /* Si el contenedor de la lista de movies tiene un margin-top fijo, se puede ajustar */
-  .container {
-    margin-top: 200px !important;
+
+}
+
+@media (max-width: 392px) {
+  .movie-posters {
+    padding-left: 10px;
+    padding-right: 10px;
+    flex: 0 0 auto;
+    width: 120px; /* ajusta tamaño del poster */
+    transition: transform 0.3s;
+    border-radius: 12px;
   }
 }
 
-@media (min-width: 992px) {
-  .hero-content {
-    text-align: left; /* en escritorio puedes alinear a la izquierda si es necesario */
+@media (max-width: 300px) {
+  .movie-posters {
+    padding-left: 10px;
+    padding-right: 10px;
+    flex: 0 0 auto;
+    width: 100px; /* ajusta tamaño del poster */
+    transition: transform 0.3s;
+    border-radius: 12px;
   }
 }
+
+
