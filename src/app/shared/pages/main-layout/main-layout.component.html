@@ -1,17 +1,17 @@
 <div class="layout">
 
-  <mat-drawer-container autosize style="background-color: rgb(15, 15, 30);">
+  <mat-drawer-container autosize style="background-color: whitesmoke">
 
     <mat-toolbar style="background-color: rgba(0, 0, 0, 0); position: fixed; z-index: 1;">
       <button (click)="drawer.toggle()" mat-icon-button>
-        <mat-icon>menu</mat-icon>
+        <mat-icon >menu</mat-icon  >
       </button>
-      <span class="title-toolbar">Sala 1</span>
-      <button mat-button [routerLink]="['/movies']" style="font-size: 20px;">Peliculas</button>
+
+      <button mat-button [routerLink]="['/movies']" style="color: whitesmoke; border-radius: 15%;"><img src="img/sala1.png" width="70px"></button>
       <span class="spacer"></span>
 
       <!-- Botón que activa el menú de ubicaciones -->
-      <button mat-button [matMenuTriggerFor]="menu" class="ubicacion-button">
+      <button mat-button [matMenuTriggerFor]="menu" class="ubicacion-button" style="color: whitesmoke;">
         <mat-icon>location_on</mat-icon>
         <span class="title-ubication">{{ userCurrentRegion || 'Ubicación' }}</span>
       </button>

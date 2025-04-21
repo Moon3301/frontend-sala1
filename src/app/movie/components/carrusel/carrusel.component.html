@@ -1,60 +1,61 @@
 <!-- Contenedor principal del carrusel/hero -->
-<div class="hero-container">
-  <!-- Imagen de fondo -->
+<div class="carousel-bg">
+  <div class="hero-container">
+    <!-- Imagen de fondo -->
 
-  @if(moviePoster){
-    <div
-      class="hero-background"
-      [ngStyle]="{'background-image': 'url('+ moviePoster.poster_url +')'}">
-    </div>
-
-    <!-- Contenido superpuesto -->
-    <div class="hero-content">
-      <h1>{{moviePoster.title_snapshoot}}</h1>
-      <p>
-        Animated film that explores the world of Monstropolis,
-        where monsters generate their city’s power by scaring
-        children at night.
-      </p>
-      <div class="hero-buttons">
-        <button
-          mat-stroked-button
-          color="primary"
-          [routerLink]="['/movies', moviePoster.movieId]"
-          >Ver cartelera</button>
+    @if(moviePoster){
+      <div
+        class="hero-background"
+        [ngStyle]="{'background-image': 'url('+ moviePoster.poster_url +')'}">
       </div>
-    </div>
 
-  }
+      <!-- Contenido superpuesto -->
+      <div class="hero-content">
+        <h1>{{moviePoster.title_snapshoot}}</h1>
+        <p>
 
-</div>
-
-<!-- Sección de películas "trending" -->
-<div class="trending-movies-container">
-  <h2>Mas Destacadas</h2>
-
-  <div class="carousel-wrapper">
-    <button class="carousel-button left" (click)="scrollCarousel('left')">
-      &#10094;
-    </button>
-
-    <!-- Contenedor para el carrusel/scroll horizontal de posters -->
-    <div class="trending-carousel" #carouselContainer>
-      @for(movies of moviesCarrusel; track $index){
-
-        <div class="movie-poster" (click)="selectMovie(movies)">
-          <img [src]="movies.img_url" alt="The Good Dinosaur">
+        </p>
+        <div class="hero-buttons">
+          <button
+            style="color: whitesmoke;"
+            mat-stroked-button
+            [routerLink]="['/movies', moviePoster.movieId]"
+            >Ver cartelera</button>
         </div>
-      }
-    </div>
+      </div>
 
-    <button class="carousel-button right" (click)="scrollCarousel('right')">
-      &#10095;
-    </button>
+    }
 
   </div>
 
+  <!-- Sección de películas "trending" -->
+  <div class="trending-movies-container">
+    <h2 style="color: whitesmoke;">Mas Destacadas</h2>
+
+    <div class="carousel-wrapper">
+      <button class="carousel-button left" (click)="scrollCarousel('left')">
+        &#10094;
+      </button>
+
+      <!-- Contenedor para el carrusel/scroll horizontal de posters -->
+      <div class="trending-carousel" #carouselContainer>
+        @for(movies of moviesCarrusel; track $index){
+
+          <div class="movie-poster" (click)="selectMovie(movies)">
+            <img [src]="movies.img_url" alt="The Good Dinosaur">
+          </div>
+        }
+      </div>
+
+      <button class="carousel-button right" (click)="scrollCarousel('right')">
+        &#10095;
+      </button>
+
+    </div>
+
+  </div>
 </div>
+
 
 
 

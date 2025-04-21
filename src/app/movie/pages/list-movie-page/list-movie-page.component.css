@@ -2,32 +2,28 @@
   position: absolute;
   top: 0;
   width: 100%;
-
-  /* La altura la determinas según lo que necesites, p. ej.: */
-
 }
 
 .list-movies-container {
-  margin-top: 100vh; /* Por ejemplo, la altura completa del viewport */
-
+  margin-top: 100vh; /* altura completa del viewport */
 }
 
 /* Ajuste para pantallas grandes o para mayor precisión */
 @media (min-width: 992px) {
   .list-movies-container {
-    margin-top: 850px; /* igual a la altura del .hero-container en escritorio */
+    margin-top: 750px; /* igual a la altura del .hero-container en escritorio */
   }
 }
 
 @media( max-width: 992px) {
   .list-movies-container {
-    margin-top: 850px; /* un valor menor para pantallas pequeñas */
+    margin-top: 750px; /* un valor menor para pantallas pequeñas */
   }
 }
 
 @media (min-width: 1200px) {
   .list-movies-container {
-    margin-top: 900px; /* un valor mayor para pantallas más grandes */
+    margin-top: 730px; /* un valor mayor para pantallas más grandes */
   }
 }
 
