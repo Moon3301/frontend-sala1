@@ -18,3 +18,10 @@ export function getFormattedDateV2(date: Date){
   return `${year}-${month}-${day}`
 
 }
+
+export function formatDateYMD(date: Date | string): string {
+  // toISOString() es UTC; ajustamos a local con un pequeño truco:
+  const d = new Date(date);
+  d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+  return d.toISOString().slice(0, 10);            // 'YYYY-MM-DD'
+}

@@ -7,6 +7,7 @@ import { AdministrationPageComponent } from "./pages/administration-page/adminis
 import { EditCarruselPageComponent } from "./pages/edit-carrusel-page/edit-carrusel-page.component";
 import { EditMoviesPagesComponent } from "./pages/edit-movies-pages/edit-movies-pages.component";
 import { UpdateRecordsPageComponent } from "./pages/update-records-page/update-records-page.component";
+import { ReportsPageComponent } from "./pages/reports-page/reports-page.component";
 
 const routes: Routes = [
 
@@ -14,11 +15,12 @@ const routes: Routes = [
     path: '',
     component: LayoutPageComponent,
     children: [
-      { path: 'edit-carrusel', component: EditCarruselPageComponent},
-      { path: 'edit-movies', component: EditMoviesPagesComponent},
-      { path: 'update-records', component: UpdateRecordsPageComponent},
+      { path: 'edit-carrusel', component: EditCarruselPageComponent },
+      { path: 'edit-movies', component: EditMoviesPagesComponent },
+      { path: 'update-records', component: UpdateRecordsPageComponent },
+      { path: 'reports', component: ReportsPageComponent },
       { path: 'adm', component: AdministrationPageComponent },
-      { path: '**', redirectTo: 'edit-carrusel'},
+      { path: '**', redirectTo: 'edit-carrusel' },
 
     ]
   }

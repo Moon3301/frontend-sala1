@@ -8,6 +8,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 import {MatRippleModule} from '@angular/material/core';
 
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
@@ -20,6 +21,7 @@ import { EditMoviesPagesComponent } from './pages/edit-movies-pages/edit-movies-
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ReportsPageComponent } from './pages/reports-page/reports-page.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     UpdateRecordsPageComponent,
     EditMoviesPagesComponent,
     EditCarruselPageComponent,
+    ReportsPageComponent,
 
   ],
   imports: [
@@ -40,7 +43,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatListModule,
     MatRippleModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule
   ],
   providers: [
     AdministrationService

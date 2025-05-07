@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environments } from '../../../environments/environments';
 import { Observable } from 'rxjs';
@@ -76,6 +76,16 @@ export class AdministrationService {
 
   public updateRecordsCineplanet(){
     return this.http.post(`${this.baseUrl}/data-loader/cineplanet`, {})
+  }
+
+  public downloadReports(showDate?: string) {
+    // build query params con HttpParams (evita string-concatenation)
+    const params = showDate ? new HttpParams().set('showDate', showDate) : undefined;
+
+    return this.http.get(`${this.baseUrl}/reports/showtimes`, {
+      params,
+      responseType: 'blob',
+    });
   }
 
 }

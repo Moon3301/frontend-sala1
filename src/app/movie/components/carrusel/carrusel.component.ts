@@ -12,6 +12,8 @@ import { environments } from '../../../../environments/environments';
 })
 export class CarruselComponent implements OnInit{
 
+  loaded: boolean = false;
+  
   swiperBreakpoints = {
     0:    { slidesPerView: 2 },
     600:  { slidesPerView: 3 },

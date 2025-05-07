@@ -12,6 +12,7 @@ import { SearchBoxComponent } from './components/search-box/search-box.component
 import { CarruselComponent } from './components/carrusel/carrusel.component';
 import { ListPremiereComponent } from './components/list-premiere/list-premiere.component';
 import { PrimengModule } from '../primeng/primeng.module';
+import { NgOptimizedImage } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PrimengModule } from '../primeng/primeng.module';
     MaterialModule,
     PrimengModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgOptimizedImage
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

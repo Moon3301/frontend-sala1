@@ -1,0 +1,25 @@
+<p-card header="Reportes de funciones" class="p-2">
+  <hr>
+  <p>Descargar reporte en formato Excel</p>
+  <form [formGroup]="reportsForm">
+
+    <div class="flex justify-center mb-2">
+      <p-select (onChange)="selectedOption()" class="m-1 w-25"  formControlName="selectedOpt" [options]="options" optionLabel="name" placeholder="Filtro por fecha"  />
+
+      @if(isDate){
+        <p-datepicker dateFormat="yy-mm-dd" (onSelect)="onDatePicked($event)" formControlName="selectedDate" class="m-1" [showIcon]="true" />
+      }
+
+      <p-button class="m-1" [disabled]="isDisabled()" (click)="downloadReport()">Descargar</p-button>
+    </div>
+
+  </form>
+
+
+
+
+
+
+</p-card>
+
+

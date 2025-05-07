@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter, Observable, of, switchMap, tap } from 'rxjs';
 import { MovieService } from '../../services/movie.service';
@@ -19,6 +19,8 @@ import { getFormattedDate } from '../../../common/helpers';
 })
 export class MoviePageComponent  implements OnInit{
 
+  @ViewChild('topFocus') topFocus!: ElementRef;
+
   movie?: Movie
   funciones?: ICines[]
   fechas?: string[]
@@ -32,6 +34,10 @@ export class MoviePageComponent  implements OnInit{
     private sanitizer: DomSanitizer,
     private dialog: MatDialog,
   ){}
+
+  ngAfterViewInit() {
+    this.topFocus.nativeElement.focus();
+  }
 
   ngOnInit(): void {
     console.log('Entrando a movie');

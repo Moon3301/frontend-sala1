@@ -2,12 +2,12 @@
 
   <mat-drawer-container autosize style="background-color: whitesmoke">
 
-    <mat-toolbar style="background-color: rgba(0, 0, 0, 0.2); position: fixed; z-index: 10;">
+    <mat-toolbar style="background-color: rgba(0, 0, 0, 0.2); position: fixed; z-index: 10000;">
       <button (click)="drawer.toggle()" mat-icon-button>
         <mat-icon style="color: whitesmoke;">menu</mat-icon  >
       </button>
 
-      <button mat-button [routerLink]="['/movies']" style="color: whitesmoke; border-radius: 15%;"><img src="img/sala1.png" width="60px"></button>
+      <button mat-button [routerLink]="['/movies']" style="color: whitesmoke; border-radius: 15%; "><img src="img/_logo_sala1.png" width="60px"></button>
       <span class="spacer"></span>
 
       <!-- Botón que activa el menú de ubicaciones -->

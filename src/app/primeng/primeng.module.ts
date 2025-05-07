@@ -10,6 +10,8 @@ import { GalleriaModule } from 'primeng/galleria';
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
+import { SelectModule } from 'primeng/select';
+import { DatePickerModule } from 'primeng/datepicker';
 
 @NgModule({
   exports: [
@@ -23,7 +25,9 @@ import { InputTextModule } from 'primeng/inputtext';
     GalleriaModule,
     TableModule,
     DialogModule,
-    InputTextModule
+    InputTextModule,
+    SelectModule,
+    DatePickerModule
   ],
 })
 export class PrimengModule { }

@@ -1,10 +1,14 @@
+<div tabindex="-1" #topFocus style="position: absolute; top: 0;"></div>
+
 <div class="container" style="margin-top: 80px;">
 
   <!-- Contenedor del video con alto fijo -->
   <mat-card class="video-container">
     <img
       class="img-video"
-      [src]="getYouTubeThumbnailUrl(movie?.trailer_url)"
+      [ngSrc]="getYouTubeThumbnailUrl(movie?.trailer_url)"
+      priority
+      fill
       alt="Video thumbnail"
       (click)="openVideoDialog()"
     />
@@ -14,14 +18,17 @@
   <mat-card style="background-color: rgb(31, 31, 31);" class="mb-5">
     <!-- Contenido textual que quedará siempre debajo del contenedor de video -->
     <mat-card-content >
-      <img
-        class="movie-poster"
-        [src]="movie?.img_url"
-        [alt]="movie?.title"
-      />
+
 
       <div class="row">
         <div class="col-3 col-md-3 movie-detail">
+
+          <img
+            width="60%"
+            class="movie-poster"
+            [src]="movie?.img_url"
+            [alt]="movie?.title"
+          />
 
           <h5>Titulo </h5>
           <mat-divider></mat-divider>
@@ -41,7 +48,7 @@
           <h3>{{ movie?.synopsis_alt }}</h3>
           <br>
           <h5 >Sinopsis:</h5>
-          <p class="movie-synopsis" style="max-height: 200px; overflow-y: auto;">{{ movie?.synopsis }}</p>
+          <p class="movie-synopsis" style="max-height: 100%; overflow-y: auto;">{{ movie?.synopsis }}</p>
         </div>
 
       </div>

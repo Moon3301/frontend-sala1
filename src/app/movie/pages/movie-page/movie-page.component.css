@@ -12,10 +12,13 @@ h1, h2, h3, h4, h5 {
   margin-bottom: 20px; /* Separa visualmente del contenido de abajo */
   border-radius: 20px;
   width: 100%;
+  height: 500px;
+  aspect-ratio: 16/9;
+
 }
 
 .movie-detail {
-  margin-top: 45px;
+
   align-items: center;
   justify-content: center;
   display: grid;
@@ -31,21 +34,23 @@ h1, h2, h3, h4, h5 {
 }
 
 .img-video {
-  height: 400px;
+  height: 100%;
+  width: 100%;
+  object-fit: fill;  /* Para que ocupe todo sin deformarse */
   border-radius: 15px;
   cursor: pointer;
+
 }
 
 /* Estilos base para móviles (mobile-first) */
 .movie-poster {
-  position: absolute;
-  bottom: 250px;        /* Posiciona verticalmente dentro del contenedor */
-  left: 14%;            /* Ajuste para móviles: se puede modificar si es necesario */
-  transform: translateX(-50%);
+
+  text-align: center;
   z-index: 10;          /* Se asegura que esté por encima del video */
-  width: 150px;         /* Tamaño base para pantallas pequeñas */
   border-radius: 15px;
-  margin-bottom: 10px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+
 }
 
 .movie-synopsis{

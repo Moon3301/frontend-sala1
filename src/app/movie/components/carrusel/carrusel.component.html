@@ -5,7 +5,16 @@
 
     @if(moviePoster){
 
-      <img class="hero-background" [src]="moviePoster.poster_url" alt="Fondo">
+      <img
+        class="hero-background"
+        [ngSrc]="moviePoster.poster_url"
+        width="100%"
+        height="100%"
+        priority
+        fill
+        (load)="loaded=true"
+        [class.loaded]="loaded"
+        alt="Fondo">
 
       <!-- Contenido superpuesto -->
       <div class="hero-content">
