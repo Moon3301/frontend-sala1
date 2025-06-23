@@ -1,7 +1,7 @@
 
 <mat-dialog-content class="dialog-content">
 
-  <div class="row">
+  <div class="row" >
     <div class="col-12 d-flex align-items-center">
       <!-- H3 crece a lo ancho y centra el texto -->
       <h3 class="flex-grow-1 text-center mb-0">
@@ -38,9 +38,9 @@
 
           @for (cinema of billboard.cinemas; track cinema) {
             <br>
-            <mat-card>
+            <mat-card style="background-color: rgb(31, 31, 31); color: whitesmoke;">
               <mat-card-header>
-                <mat-card-title style="color: rgb(31, 31, 31);">{{cinema.cinemaName}}</mat-card-title>
+                <mat-card-title style="color: whitesmoke;">{{cinema.cinemaName}}</mat-card-title>
               </mat-card-header>
               <hr>
               <mat-card-content>
@@ -55,7 +55,7 @@
                         <button mat-button
 
                           [disabled]="disabled"
-                          [ngStyle]="disabled ? { color: 'grey' } : { color: 'black' }"
+                          [ngStyle]="disabled ? { color: 'grey' } : { color: 'whitesmoke' }"
                           (click)="buildUrlPaymentCinepolis(
                           cinema.vistaId,
                           schedule.showtimeExternalId)"
@@ -63,12 +63,12 @@
                           >
                           {{ schedule.showtime }} {{schedule.language}}
                       </button>
-                      <mat-divider class="mt-2"></mat-divider>
+
                       }@else if
                       (billboard.cinemaType === 'Cinemark'){
                         <button mat-button
                         [disabled]="disabled"
-                        [ngStyle]="disabled ? { color: 'grey' } : { color: 'black' }"
+                        [ngStyle]="disabled ? { color: 'grey' } : { color: 'whitesmoke' }"
                         (click)="buildUrlPaymentCinemark(
                           cinema.cinemaExternalId,
                           schedule.showtimeExternalId,
@@ -80,12 +80,12 @@
                           >
 
                         {{ schedule.showtime }} {{schedule.language}}</button>
-                        <mat-divider class="mt-3"></mat-divider>
+
                       }@else if
                       (billboard.cinemaType === 'Cineplanet'){
                         <button mat-button
                         [disabled]="disabled"
-                        [ngStyle]="disabled ? { color: 'grey' } : { color: 'black' }"
+                        [ngStyle]="disabled ? { color: 'grey' } : { color: 'whitesmoke' }"
                           (click)="buildUrlPaymentCineplanet(
                             cinema.version.title,
                             cinema.cinemaExternalId,
@@ -95,12 +95,12 @@
                           >
 
                         {{ schedule.showtime }} {{schedule.language}}</button>
-                        <mat-divider class="mt-3"></mat-divider>
+
                       }@else if
                       (billboard.cinemaType === 'Muvix'){
                         <button mat-button
                         [disabled]="disabled"
-                        [ngStyle]="disabled ? { color: 'grey' } : { color: 'black' }"
+                        [ngStyle]="disabled ? { color: 'grey' } : { color: 'whitesmoke' }"
                           (click)="buildUrlPaymentMuvix(
                             cinema.cinemaExternalId,
                             schedule.sessionId
@@ -109,12 +109,12 @@
                           >
 
                         {{ schedule.showtime }} {{schedule.language}}</button>
-                        <mat-divider class="mt-3"></mat-divider>
+
                       }@else if
                       (billboard.cinemaType === 'Cinestar'){
                         <button mat-button
                         [disabled]="disabled"
-                        [ngStyle]="disabled ? { color: 'grey' } : { color: 'black' }"
+                        [ngStyle]="disabled ? { color: 'grey' } : { color: 'whitesmoke' }"
                           (click)="buildUrlPaymentCinestar(
                             cinema.cinemaExternalId,
                             schedule.sessionId
@@ -123,11 +123,11 @@
                           >
 
                         {{ schedule.showtime }} {{schedule.language}}</button>
-                        <mat-divider class="mt-3"></mat-divider>
+
                       }@else if(billboard.cinemaType === 'Lido'){
                         <button mat-button
                         [disabled]="disabled"
-                        [ngStyle]="disabled ? { color: 'grey' } : { color: 'black' }"
+                        [ngStyle]="disabled ? { color: 'grey' } : { color: 'whitesmoke' }"
                           (click)="buildUrlPaymentLido(
                             schedule.sessionId
                           )"
@@ -135,17 +135,17 @@
                           >
 
                         {{ schedule.showtime }} {{schedule.language}}</button>
-                        <mat-divider class="mt-3"></mat-divider>
+
                       }@else if(billboard.cinemaType === 'Paseo del valle'){
                         <button mat-button
                         [disabled]="disabled"
-                        [ngStyle]="disabled ? { color: 'grey' } : { color: 'black' }"
+                        [ngStyle]="disabled ? { color: 'grey' } : { color: 'whitesmoke' }"
                           (click)="buildUrlPaymentPDV()"
                           class="notranslate text-showtime" translate="no"
                           >
 
                         {{ schedule.showtime }} {{schedule.language}}</button>
-                        <mat-divider class="mt-3"></mat-divider>
+
                       }
                       <hr>
                     </div>

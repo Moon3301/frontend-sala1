@@ -14,6 +14,8 @@ export class CardComponent implements OnInit {
   @Input()
   movie?: Movie
 
+  notImageFound = 'img/not-image.webp';
+
   constructor(private router:Router){
 
   }

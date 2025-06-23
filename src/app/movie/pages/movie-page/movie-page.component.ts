@@ -173,7 +173,7 @@ export class MoviePageComponent  implements OnInit{
         movie: this.movie,
         dates: this.fechas
       },
-      width: '90%',
+      width: '99%',
       height: '80%',
       maxWidth: '100%',
       panelClass: 'custom-dialog-container',    // Clase personalizada para el contenedor
